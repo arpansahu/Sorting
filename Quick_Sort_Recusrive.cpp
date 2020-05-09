@@ -2,20 +2,20 @@
 
 using namespace std;
 
-int Partition(int a[], int start, int end)
+int Partition(int arr[], int start, int end)
 {
-    int pivot = a[end];
+    int pivot = arr[end];
     int pIndex = start;
 
     for (int i = start; i < end; i++)
     {
-        if (a[i] <= pivot)
+        if (arr[i] <= pivot)
         {
-            swap(a[i], a[pIndex]);
+            swap(arr[i], arr[pIndex]);
             pIndex++;
         }
     }
-    swap (a[pIndex], a[end]);
+    swap (arr[pIndex], arr[end]);
     return pIndex;
 }
 void QuickSort(int arr[],int start,int end){
