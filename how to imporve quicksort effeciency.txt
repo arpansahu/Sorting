@@ -1,0 +1,47 @@
+How to Boost Quicksort performance?
+ 
+Quicksort performance can be boosted in several ways. In this post, we will cover few of them.
+
+
+ 
+
+In the previous post, we have provided overview of Quicksort algorithm. We have seen that the worst case time complexity of Quicksort is O(n2). The worst case happens when the list is already sorted and each recursive call processes a list of size one less than the previous list which results in O(n2) time.
+
+ 
+Also the best case time complexity of quicksort is O(nlog(n)). The best case happens when the pivot divides the array into two nearly equal halves and each recursive call processes a list of half the size.
+
+ 
+Quicksort performance can be further improved in multiple ways –
+
+ 
+
+1. Better pivot selection
+In quicksort, one of the critical operations is choosing the pivot: the element around which the list is partitioned. Quicksort normally choose the leftmost or the rightmost element of the partition as the pivot element. This selection will cause worst-case behavior on sorted or nearly sorted input. The problem can be easily solved by choosing either a random index for the pivot (called Randomized Quicksort) or choosing the median of the first, middle and last element of the partition for the pivot (called median-of-3 selection). Randomized partition implementation can be seen here.
+
+ 
+
+2. Hoare’s Partitioning scheme
+Hoare partition scheme uses two indices that start at the ends of the array being partitioned, then move toward each other, until they detect an inversion: a pair of elements, one greater than the pivot, one smaller, that are in the wrong order relative to each other. The inverted elements are then swapped. When the indices meet, the algorithm stops and returns the final index.
+
+Hoare’s scheme is more efficient than partitioning logic used above (also called as Lomuto’s partition scheme) because it does three times fewer swaps on average, and it creates efficient partitions even when all values are equal. Hoare’s Partitioning scheme is discussed here.
+
+ 
+
+3. Handle Repeated elements
+With a partitioning algorithm such as the ones described above (even with one that chooses good pivot values), quicksort exhibits poor performance for inputs that contain many repeated elements. The problem is clearly visible when all the input elements are equal. Then at each recursion, the left partition is empty (no input values are less than the pivot), and the right partition has only decreased by one element (the pivot is removed). Consequently, the algorithm takes quadratic time to sort an array of equal values.
+
+To solve this problem (sometimes called the Dutch national flag problem), an alternative linear-time partition routine can be used that separates the values into three groups: values less than the pivot, values equal to the pivot, and values greater than the pivot. The values equal to the pivot are already sorted, so only the less-than and greater-than partitions need to be recursively sorted.
+
+The best case for the algorithm now occurs when all elements are equal (or are chosen from a small set of k << n elements). In the case of all equal elements, the modified quicksort will perform at most two recursive calls on empty subarrays and thus finish in linear time. This approach is discussed here.
+
+ 
+
+4. Using Tail Recursion
+To make sure at most O(log(n)) space is used, recur first into the smaller side of the partition, then use a tail call to recur into the other. As such, we successfully sort the array in a way that it minimizes the recursive depth. It’s implementation can be seen here.
+
+ 
+
+5. Hybrid with Insertion Sort
+When the number of elements is below some threshold (perhaps ten elements), switch to a non-recursive sorting algorithm such as insertion sort that performs fewer swaps, comparisons or other operations on such small arrays. This approach is discussed here.
+
+Instead of “many small sorts” optimization, when the number of elements is less than some threshold k, we can simply stop. Later when the whole array has been processed, each element will be at most k positions away from its final sorted position. Now if we perform insertion sort on it, it will take O(kn) time to finish the sort, which is linear as k is a constant.
