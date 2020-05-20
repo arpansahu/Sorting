@@ -14,8 +14,8 @@ class priorityQueue{
         int smallest = index;
         int left = LEFT(index);
         int right = RIGHT(index);
-        if(left <  size && A[index] > A[left]) smallest = left;
-        if(right <  size && A[index] > A[right]) smallest = right;
+        if(left <  size && A[smallest] > A[left]) smallest = left;
+        if(right <  size && A[smallest] > A[right]) smallest = right;
         if(smallest != index){
             swap(A[index],A[smallest]);
             heapifyDown(smallest);
