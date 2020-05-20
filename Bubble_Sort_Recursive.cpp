@@ -13,6 +13,7 @@ void BubbleSort(int arr[],int size){
             count++;
         }
     }
+    if(count == 0)  return;
     if(size - 1 > 1 ) BubbleSort(arr,size -  1);
 
 }

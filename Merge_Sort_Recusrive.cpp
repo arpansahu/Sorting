@@ -11,6 +11,7 @@ void Merge(int arr[],int aux[],int low,int mid ,int high){
     while(i <= mid) aux[k++] = arr[i++];
     for (int l = low; l <= high ; ++l) arr[l] = aux[l];
 }
+
 void MergeSort(int arr[],int aux[],int low,int high){
     if(high == low) return ;
     int mid = (low + ((high - low) >> 1));
@@ -28,8 +29,6 @@ int main()
     for (int i = 0; i < size; ++i) aux[i] = arr[i];
 
     MergeSort(arr, aux,0,size - 1);
-
-
     for (int k = 0; k < (*(&arr + 1) - arr); ++k) {
         cout<<arr[k]<<" ";
     }cout<<"\n";

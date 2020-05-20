@@ -15,7 +15,7 @@ void BubbleSort(int arr[],int size){
             }
         }
 
-        if(count == 0) return;;
+        if(count == 0) return;
     }
 }
 int main()

@@ -21,7 +21,7 @@ int Partition(int a[], int start, int end)
 
 int RandomizedPartition(int arr[],int start ,int end ){
     int pivotIndex = rand() %  (end - start + 1) + start;
-    int temp = arr[pivotIndex]; arr[pivotIndex] =  arr[end];  arr[end] = temp;
+    swap(arr[end],arr[pivotIndex]);
     return Partition(arr,start,end);
 }
 

@@ -6,7 +6,6 @@ int Partition(int arr[], int start, int end)
 {
     int pivot = arr[end];
     int pIndex = start;
-
     for (int i = start; i < end; i++)
     {
         if (arr[i] <= pivot)
