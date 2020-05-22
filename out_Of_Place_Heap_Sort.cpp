@@ -65,4 +65,5 @@ int main(){
     for (int k = 0; k < (*(&arr + 1) - arr); ++k) {
         cout<<arr[k]<<" ";
     }cout<<"\n";
+    return 0;
 }
