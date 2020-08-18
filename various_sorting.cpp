@@ -43,7 +43,10 @@ void selectionSortIterative(int arr[],int size){
 }
 
 void bubbleSortRecrsively(int arr[],int size){
-    for (int i = 0; i < size - 1; ++i)  if(arr[i] > arr[i + 1]) swap(arr[i] ,arr[i+1]);
+    for (int i = 0; i < size - 1; ++i)
+        if(arr[i] > arr[i + 1])
+            swap(arr[i] ,arr[i+1]);
+
     if(size - 1 > 1) bubbleSortRecrsively(arr,size - 1);
 }
 
